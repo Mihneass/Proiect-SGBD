@@ -3103,7 +3103,7 @@ DECLARE
   'Theodor','Tudor','Vadim','Valentin','Valeriu','Vasile','Victor','Vlad','Vladimir','Vladut');
         
   lista_tari varr := varr('Rusia','Romania','Germania','Grecia','Turcia','Spania','Anglia','Suedia','Albania','Bulgaria'); 
-  lista_gen varr := varr('Drama','Roman','Razboi','Nuvela','Fabule','Horror','Psihologic','Atlas','Carte de colorat','Povesti pentru copii','Istorie'); 
+  lista_gen varr := varr('Drama','Fiction','Razboi','Poetry','Romance','Horror','Jurnal','Atlas','Carte de colorat','Povesti pentru copii','Istorie'); 
   
    
   v_nume VARCHAR2(255);
