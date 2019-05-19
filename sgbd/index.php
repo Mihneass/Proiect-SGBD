@@ -19,6 +19,13 @@ if(!isset($_COOKIE['is_logged'])){
 	<div id="header">
 		<div>
 			<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
+			<?php
+			if($_COOKIE['is_logged']==="LOGGED"){
+				echo "<form action=".'"'."logout_process.php".'"'." method=".'"'."POST".'"'." >";	
+				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
+				echo "</form>";
+			}
+			?>
 			<form action="index.php">
 					<a href="cos.php"><img  src="images/cos.jpg" alt="" name="cos" id="cos"></a>
 			</form>
