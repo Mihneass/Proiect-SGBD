@@ -15,6 +15,7 @@
 				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
 				echo "</form>";
 			}
+			else header('Location: index.php');
 			?>
 			<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
 			<form action="index.php">

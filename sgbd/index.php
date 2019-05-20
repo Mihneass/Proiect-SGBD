@@ -13,6 +13,7 @@ if(!isset($_COOKIE['is_logged'])){
 	setcookie("user",0,time()-(86400*10),"/");
 }
 
+
 ?>
 
 <body>
@@ -21,6 +22,7 @@ if(!isset($_COOKIE['is_logged'])){
 			<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
 			<?php
 			if($_COOKIE['is_logged']==="LOGGED"){
+				header('Location: services.php');
 				echo "<form action=".'"'."logout_process.php".'"'." method=".'"'."POST".'"'." >";	
 				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
 				echo "</form>";
