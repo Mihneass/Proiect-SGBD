@@ -127,7 +127,7 @@ if(!isset($_COOKIE['is_logged'])){
 						<h2>							DON'T HAVE A BIBLIOTECA ACCOUNT?						
 							</h2>
 						
-						<form action="index.html">
+						<form action="user_creation_process.php" method="POST">
 							<h4>fill in your contact details</h4>
 							<div class="form1">
 								<label for="fname"> <span>first name</span>
@@ -153,6 +153,12 @@ if(!isset($_COOKIE['is_logged'])){
 								<label for="uname"> <span>Username</span>
 									<input type="text" name="uname" id="uname" required>
 								</label>
+								<label for="passr"> <span>Password</span>
+									<input type="password" name="passr" id="passr" required>
+								</label>
+								<label for="passr2"> <span>Confirm your password</span>
+									<input type="password" name="passr2" id="passr2" required>
+								</label>
 
 								<label for="fax"> <span>Fax</span>
 									<input type="text" name="fax" id="fax" required>
@@ -161,6 +167,13 @@ if(!isset($_COOKIE['is_logged'])){
 								<label > <span>register</span>
 								<button type="submit"> ok </button>
 							</label>
+							<?php  if($_COOKIE['error_state']==="USER_TAKEN"){
+							echo "The username is already in use";
+							setcookie("error_state","NO_PROBLEM",time()+(86400*100));}
+							else if($_COOKIE['error_state']==="PASS_DOESNT_MATCH"){
+							echo "The passwords must match";
+							setcookie("error_state","NO_PROBLEM",time()+(86400*100));
+							} ?>
 
 								
 							</div>	
