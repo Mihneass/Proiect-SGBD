@@ -110,23 +110,23 @@
 					
 					echo "</h4></th><th><h4>Book Year= ".$row['AN_PUBLICATIE']; 
 					
-					echo "</h4></tr><tr><th><h4>Book price="; 
+					echo "</h4></tr><tr><th><h4>Book price=".$row['PRET']; 
 					
 					echo "</h4></th><th><h4>Book Genre= ".$row['GEN_CARTE'];
+
+					echo "</h4></th><th><h4>Nr. Books= ".$row['NR_TOTALE'];
 					
-					echo "</h4>	
-									
-							</th>
-							<th>		
-									<h4>Name7</h4>		
-									
-							</th>
-							
-	
+					echo "
+
 						</tr>
 						<tr>
 							<th>
 								<button type=".'"'."button".'"'.">Buy</button>
+							</th>
+						
+						
+							<th>
+								<button type=".'"'."button".'"'.">imprumut</button>
 							</th>
 						</tr>
 				</table>";
