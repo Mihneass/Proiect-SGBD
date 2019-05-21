@@ -1085,3 +1085,25 @@ body {
 #footer .section ul li a:hover {
 	text-decoration: underline;
 }
+
+#body .content .section .contact table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#body .content .section .contact td, 
+#body .content .section .contact th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#body .content .section .contact tr:nth-child(even){background-color: #f2f2f2;}
+
+#body .content .section .contact tr:hover {background-color: #ddd;}
+
+#body .content .section .contact th {
+ 
+  text-align: left;
+  background-color: #9CC0D0;
+  
+}

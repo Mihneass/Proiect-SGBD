@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
+<apex:page  applyHtmlTag="false">
+
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>contact</title>
+	<title>imprumuturi</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	
 </head>
@@ -57,7 +59,7 @@
 						</ul>
 				</li>
 				<li>
-					<a href="contact.php">contact</a>
+					<a href="contact.php">imprumuturi</a>
 				</li>
 				<li class="booking">
 					<a href="booking.php">Contul meu</a>
@@ -69,24 +71,34 @@
 		<div class="content">
 			<div class="section">
 				<div class="contact">
-					<h2>get in touch with us!</h2>
-					<p>
-					fdfdfdf	</p>
-					<form action="index.php">
-						<label for="name"> <span>name</span>
-							<input type="text" name="name" id="name">
-						</label>
-						<label for="email"> <span>email</span>
-							<input type="text" name="email" id="email">
-						</label>
-						<label for="subject"> <span>subject</span>
-							<input type="text" name="subject" id="subject">
-						</label>
-						<label for="message"> <span>comment</span>
-							<textarea name="message" id="message"></textarea>
-						</label>
+					<h2>imprumuturile mele</h2>
+					<table class="table">
+  <tr >
+    <th>Book ID</th>
+    <th>Book Name</th> 
+	<th>Date loan</th>
+	<th>Date return</th>
+  </tr>
+  <tr>
+    <td>tatata</td>
+    <td>Smith</td>
+	<td>12.02.2017</td>
+	<td>22.02.2017</td>
+  </tr>
+  <tr>
+  <td>Jill</td>
+    <td>Smith</td>
+	<td>12.02.2017</td>
+	<td>22.02.2017</td>
+  </tr>
+  <tr>
+  <td>Jill</td>
+    <td>Smith</td>
+	<td>12.02.2017</td>
+	<td>22.02.2017</td>
+  </tr>
+</table>
 					
-					</form>
 				</div>
 			</div>
 			<div class="sidebar">

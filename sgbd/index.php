@@ -67,7 +67,7 @@ if(!isset($_COOKIE['is_logged'])){
 						</ul>
 				</li>
 				<li>
-					<a href="contact.php">contact</a>
+					<a href="contact.php">imprumuturi</a>
 				</li>
 				<li class="booking">
 					<a href="booking.php">Contul meu</a>
