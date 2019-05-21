@@ -735,11 +735,12 @@ body {
 }
 
 
-#body .content .section .booking form #fname, #body .content .section .booking form #email3,
- #body .content .section .booking form #address, #body .content .section .booking form #address2,
-  #body .content .section .booking form #fax,
+#body .content .section .booking form #phone, 
+ #body .content .section .booking form #address, #body .content .section .booking form #lname,
+  #body .content .section .booking form #passr2,
    #body .content .section .booking form #uname,
-    #body .content .section .booking form #dd,
+		#body .content .section .booking form #dd,
+		#body .content .section .booking form #passr,
   #body .content .section .booking .form2 div  {
 	margin: 0 40px 0 0;
 }
@@ -1102,6 +1103,35 @@ body {
 #body .content .section .contact tr:hover {background-color: #ddd;}
 
 #body .content .section .contact th {
+ 
+  text-align: left;
+  background-color: #9CC0D0;
+  
+}
+
+
+
+
+
+
+
+
+#body .content .section .services .tab {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#body .content .section .services .tab td, 
+#body .content .section .services .tab th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#body .content .section .services .tab tr:nth-child(even){background-color: #f2f2f2;}
+
+#body .content .section .services .tab tr:hover {background-color: #ddd;}
+
+#body .content .section .services .tab th {
  
   text-align: left;
   background-color: #9CC0D0;
