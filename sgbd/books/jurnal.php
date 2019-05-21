@@ -88,8 +88,8 @@
 					<h2>Books</h2>
 					
 					<?php
-					if(isset($_GET['page']))showBooks("carti","'Journal'",$_GET['page']);
-					                   else showBooks("carti","'Journal'",1);
+					if(isset($_GET['page']))showBooks("carti","'Jurnal'",$_GET['page']);
+					                   else showBooks("carti","'Jurnal'",1);
 					
 				?>
 				</div>
@@ -98,7 +98,7 @@
 						$i=0;
 						if(isset($_GET['page']))$currentPage=$_GET['page'];
 						else $currentPage=1;
-						$nrBooks=numberOfBooks("carti","'Journal'");
+						$nrBooks=numberOfBooks("carti","'Jurnal'");
 						$totalPages=(int)$nrBooks/12;
 						if($currentPage>5)echo "<a href=".'"'."jurnal.php?page=1".'"'.">1</a>   ...   ";
 						while($i<$totalPages){
