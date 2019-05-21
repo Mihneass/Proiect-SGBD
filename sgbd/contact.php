@@ -15,6 +15,7 @@
 			if($_COOKIE['is_logged']==="LOGGED"){
 				echo "<form action=".'"'."logout_process.php".'"'." method=".'"'."POST".'"'." >";	
 				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
+				
 				echo "</form>";
 			}
 			?>
@@ -73,7 +74,6 @@
 				<div class="contact">
 					<h2>imprumuturile mele</h2>
 					<?php showBooks($_COOKIE['userID']); ?>
-					
 				</div>
 			</div>
 			<div class="sidebar">
@@ -207,7 +207,4 @@
 						}
 
 						?>
-
-
-
 	</html>
