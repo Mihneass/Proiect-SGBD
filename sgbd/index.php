@@ -132,29 +132,36 @@ if(!isset($_COOKIE['is_logged'])){
 						<form action="user_creation_process.php" method="POST">
 							<h4>fill in your contact details</h4>
 							<div class="form1">
-								<label for="fname"> <span>first name</span>
-									<input type="text" name="fname" id="fname" required>
+								
+								<label for="uname"> <span>Username</span>
+									<input type="text" name="uname" id="uname" required>
+								</label>
+								
+								<label for="email3"> <span>email address</span>
+									<input type="email" name="email3" id="email3" required>
 								</label>
 								<label for="lname"> <span>last name</span>
 									<input type="text" name="lname" id="lname" required>
 								</label>
-								<label for="email3"> <span>email address</span>
-									<input type="text" name="email3" id="email3" required>
+								<label for="fname"> <span>first name</span>
+									<input type="text" name="fname" id="fname" required>
 								</label>
-								<label for="phone"> <span>phone number</span>
-									<input type="text" name="phone" id="phone" required>
-								</label>
+								
 								
 								<label for="address1"> <span>address </span>
 									<input type="text" name="address" id="address" required>
 								</label>
-								<label for="zip"> <span>zipcode</span>
-									<input type="text" name="zip" id="zip" required>
-								</label>
 
-								<label for="uname"> <span>Username</span>
-									<input type="text" name="uname" id="uname" required>
+								<label for="gen"> <span>gender </span>
+									<select name="schedule" id="schedule">
+										<option value="">male</option>
+										<option value="">female</option>	
+									</select>
 								</label>
+								<label for="phone"> <span>phone number</span>
+									<input type="tel" pattern="[0-9]7[0-9]{8}" name="phone" id="phone" required>
+								</label>
+								
 								<label for="passr"> <span>Password</span>
 									<input type="password" name="passr" id="passr" required>
 								</label>
@@ -162,9 +169,7 @@ if(!isset($_COOKIE['is_logged'])){
 									<input type="password" name="passr2" id="passr2" required>
 								</label>
 
-								<label for="fax"> <span>Fax</span>
-									<input type="text" name="fax" id="fax" required>
-								</label>
+
 
 								<label > <span>register</span>
 								<button type="submit"> ok </button>
