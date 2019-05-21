@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
+<apex:page  applyHtmlTag="false">
 
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>thisbook</title>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
-	
+	<?php
+	if(!isset($_COOKIE['current_position']))setcookie("current_position",(int)0,time()+(86400));
+	?>
 </head>
 <body>
 	<div id="header">
@@ -99,34 +102,52 @@
 					oci_execute($stid);	
 					$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
 					
-					echo "<table><tr><th><h4>Book Name= ".$row['TITLU_CARTE']; 
-					
+					echo "<table class='tab'><tr><th><h4>Book Name"; 
+					echo "</h4></th><td><h4>".$row['TITLU_CARTE'];
 					$enquiry="SELECT * FROM autori where ID_AUTOR=".$row['ID_AUTOR_C'];
 					$stid = oci_parse($conn, $enquiry);
 					oci_execute($stid);	
 					$rowAuthor = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);				
 
-					echo "</h4></th><th><h4>Book Autor=".$rowAuthor['NUME_AUTOR']." ".$rowAuthor['PRENUME_AUTOR']; 
 					
-					echo "</h4></th><th><h4>Book Year= ".$row['AN_PUBLICATIE']; 
 					
-					echo "</h4></tr><tr><th><h4>Book price=".$row['PRET']; 
+					echo "</h4></td></tr><tr><th><h4>Book Author"; 
+					echo "</h4></th><td><h4>".$rowAuthor['NUME_AUTOR']." ".$rowAuthor['PRENUME_AUTOR'];
 					
-					echo "</h4></th><th><h4>Book Genre= ".$row['GEN_CARTE'];
+					echo "</h4></td></tr><tr><th><h4>Nationality of the author";
+					echo "</h4></th><td><h4>".$rowAuthor['NATIONALITATE']; 
+					
+					echo "</h4></td></tr><tr><th><h4>Book Year"; 
+					echo "</h4></th><td><h4>".$row['AN_PUBLICATIE']; 
+					
+					echo "</h4></td></tr><tr><th><h4>Pret";
+					echo "</h4></th><td><h4>".$row['PRET']; 
+					
+					echo "</h4></td></tr><tr><th><h4>Book Genre"; 
+					echo "</h4></th><td><h4>".$row['GEN_CARTE'];
 
-					echo "</h4></th><th><h4>Nr. Books= ".$row['NR_TOTALE'];
-					
-					echo "
+					echo "</h4></td></tr><tr><th><h4>Nr. of books available";
+					echo "</h4></th><td><h4>".$row['NR_DISPONIBILE']; 
 
+					echo "</h4></td></tr><tr><th><h4>Total nr. of books"; 
+					echo "</h4></th><td><h4>".$row['NR_TOTALE'];
+					
+					echo "</h4></td></tr>
+					</table>
+					<table>
 						</tr>
 						<tr>
 							<th>
-								<button type=".'"'."button".'"'.">Buy</button>
-							</th>
-						
-						
-							<th>
-								<button type=".'"'."button".'"'.">imprumut</button>
+								<form action=".'"'."actiune_cumparare.php".'"'." method=".'"'."POST".'"'.">
+								<select name=".'"'."schedule".'"'." id=".'"'."schedule".'"'.">
+								<option value=".'"'."cumpara".'"'.">cumpara</option>
+								<option value=".'"'."imprumuta".'"'.">imprumuta</option>	
+							</select>
+								<input type=".'"'."text".'"'." name=".'"'."book_ID".'"'." value=".'"'.$row['ID_CARTE'].'"'." hidden>
+								<input type=".'"'."text".'"'." name=".'"'."book_name".'"'." value=".'"'.$row['TITLU_CARTE'].'"'." hidden>
+								<input type=".'"'."text".'"'." name=".'"'."book_price".'"'." value=".'"'.$row['PRET'].'"'." hidden>
+								<button type=".'"'."submit".'"'." name=".'"'."buy".'"'.">Buy</button></form>
+								
 							</th>
 						</tr>
 				</table>";
