@@ -87,42 +87,59 @@
 				<div class="services">
 					<h2>shopping cart</h2>
 					<table>
-					<ul>
-						
-						<li>				
-							<h4>Book Name= ...</h4>
-							<h4>Book Price= ...</h4>
 
-						</li>
-						<li>				
-								<h4>Book Name= ...</h4>
-								<h4>Book Price= ...</h4>
-	
-						</li>
-							<li>				
-									<h4>Book Name= ...</h4>
-									<h4>Book Price= ...</h4>
-		
-							</li>
-
-						
-
-						</ul>
 
 					<tr>
-						
-							<th>	
-									<h4>Total Nr. of Book = .+.+.</h4>
-									<h4>Total Book price= .+..+..</h4>			
+						<th>
+				      				
+							<h4>Book Name= ...</h4>
+							<h4>Book Price= ...</h4>
+							
+							
+		               </th>
+	                 	<th>
+							<button type="submit"> &times</button>
+
+							<select name="schedule" id="schedule">
+								<option value="">cumpara</option>
+								<option value="">imprumuta</option>	
+							</select>
+						</th>
+					</tr>
+		
+
+<tr>
+						<th>
+				      				
+							<h4>Book Name= ...</h4>
+							<h4>Book Price= ...</h4>
+							
+							
+		               </th>
+	                 	<th>
+							<button type="submit"> &times</button>
+
+							<select name="schedule" id="schedule">
+								<option value="">cumpara</option>
+								<option value="">imprumuta</option>	
+							</select>
+						</th>
+					</tr>
+
+					<th>	
+						<h4>Total Nr. of Book = .+.+.</h4>
+						<h4>Total Book price= .+..+..</h4>			
 									
-							</th>
+					</th>
 	
 							
-						<tr>
-							<th>
-								<button type="button">place your order</button>
-							</th>
-						</tr>
+					<tr>
+						
+						<th>
+							<button type="button">place your order</button>
+						</th>
+					</tr>
+					
 				</table>
 				</div>
 			</div>
