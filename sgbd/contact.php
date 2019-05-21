@@ -72,32 +72,7 @@
 			<div class="section">
 				<div class="contact">
 					<h2>imprumuturile mele</h2>
-					<table class="table">
-  <tr >
-    <th>Book ID</th>
-    <th>Book Name</th> 
-	<th>Date loan</th>
-	<th>Date return</th>
-  </tr>
-  <tr>
-    <td>tatata</td>
-    <td>Smith</td>
-	<td>12.02.2017</td>
-	<td>22.02.2017</td>
-  </tr>
-  <tr>
-  <td>Jill</td>
-    <td>Smith</td>
-	<td>12.02.2017</td>
-	<td>22.02.2017</td>
-  </tr>
-  <tr>
-  <td>Jill</td>
-    <td>Smith</td>
-	<td>12.02.2017</td>
-	<td>22.02.2017</td>
-  </tr>
-</table>
+					<?php showBooks($_COOKIE['userID']); ?>
 					
 				</div>
 			</div>
@@ -197,4 +172,42 @@
 			</div>
 		</div>
 	</body>
+	<?php 
+						function showBooks($userID){
+						//	$table="carti";
+						//	$bookType="'Drama'";
+							$conn = oci_connect("student", "student", "localhost:1521/xe");
+							if (!$conn) {
+  							$m = oci_error();
+   							echo $m['message'], "\n";
+   							exit;
+										}
+							$enquiry="SELECT * FROM IMPRUMUTURI i JOIN CARTI c ON i.ID_CARTE_I=c.ID_CARTE where ID_DATORNIC=".$userID;
+							$stid = oci_parse($conn, $enquiry);
+							oci_execute($stid);
+							echo "<table class="."table".">
+							<tr >
+								<th>Book ID</th>
+								<th>Book Name</th> 
+							<th>Date loan</th>
+							<th>Date return</th>
+							</tr>";
+							while($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
+							echo "
+							<tr >
+								<th>".$row['ID_CARTE_I']."</th>
+								<th>".$row['TITLU_CARTE']."</th> 
+							<th>".$row['DATA_TRANZACTIE']."</th>
+							<th>".$row['DATA_LIMITA']."</th>
+							</tr>";
+						}
+						echo "</table>";
+							oci_close($conn);
+							
+						}
+
+						?>
+
+
+
 	</html>
