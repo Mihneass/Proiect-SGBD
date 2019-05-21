@@ -16,6 +16,7 @@ if($row==null){setcookie("is_logged","USER_NOT_FOUND",time()+(86400*10),"/");
             header('Location: /sgbd/index.php');}
             else {setcookie("is_logged","LOGGED",time()+(86400*10),"/");
                   setcookie("user",$row['PRENUME'],time()+(86400*10),"/");
+                  setcookie("userID",$row['ID_USER'],time()+(86400*10),"/");
                   header('Location: /sgbd/index.php');
                 }
 
