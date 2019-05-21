@@ -137,12 +137,13 @@
 					<tr>
 						
 						<th>";
-							if($nrBooks!=0)echo "<form method=".'"'."POST".'"'." action=".'"'."books/finalize_purchase.php".'"'."><button type=".'"'."submit".'"'.">place your order</button>";
-					echo"	</th>
+						if($nrBooks!=0)echo "<form method=".'"'."POST".'"'." action=".'"'."books/finalize_purchase.php".'"'."><button type=".'"'."submit".'"'.">place your order</button>";
+						echo"	</th>
 					</tr>
 					
 				</table>";
 				?>
+				</table>
 				</div>
 			</div>
 			<div class="sidebar">
