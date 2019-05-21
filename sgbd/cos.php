@@ -34,7 +34,7 @@
 					<a href="services.php">books</a>
 					<ul>
 						<li>
-							<a href="books/rama.php">Drama</a>
+							<a href="books/drama.php">Drama</a>
 						</li>
 						<li>
 							<a href="books/fiction.php">Fiction</a>
@@ -86,61 +86,63 @@
 				</div>
 				<div class="services">
 					<h2>shopping cart</h2>
+					<?php
+					$fileContent = file_get_contents('./books/cosul_curent.json');
+					$books = json_decode($fileContent,true);
+					$nrBooks=0;
+					$valueBooks=0;
+					foreach($books as $element){
+					$nrBooks++;
+					if($element['buyOrLease']!='imprumuta')
+						$valueBooks+=$element['price'];
+					echo "
 					<table>
 
 
 					<tr>
 						<th>
 				      				
-							<h4>Book Name= ...</h4>
-							<h4>Book Price= ...</h4>
+							<h4>Book Name=".$element['bookName']; 
+					if($element['buyOrLease']!="imprumuta")
+					echo "</h4>
+							<h4>Book Price=".$element['price']; 
+							else echo "</h4>
+							<h4>Book Price= Imprumut"; 
+					echo "</h4>
+							<h4>Tranzaction type=".$element['buyOrLease']; 
+					echo "</h4>
 							
 							
 		               </th>
-	                 	<th>
-							<button type="submit"> &times</button>
+						 <th><form method=".'"'."POST".'"'." action=".'"'."books/basket_eliminate.php".'"'.">
+						 <input type=".'"'."text".'"'." name=".'"'."position_to_delete".'"'." value=".'"'.$element['positionInBasket'].'"'." hidden>
+							<button type=".'"'."submit".'"'."> &times</button></form>
 
-							<select name="schedule" id="schedule">
-								<option value="">cumpara</option>
-								<option value="">imprumuta</option>	
-							</select>
-						</th>
-					</tr>
-		
-
-<tr>
-						<th>
-				      				
-							<h4>Book Name= ...</h4>
-							<h4>Book Price= ...</h4>
 							
-							
-		               </th>
-	                 	<th>
-							<button type="submit"> &times</button>
-
-							<select name="schedule" id="schedule">
-								<option value="">cumpara</option>
-								<option value="">imprumuta</option>	
-							</select>
 						</th>
-					</tr>
+					</tr>";
+					}
 
+
+					echo "
 					<th>	
-						<h4>Total Nr. of Book = .+.+.</h4>
-						<h4>Total Book price= .+..+..</h4>			
+						<h4>Total Nr. of Book = ".$nrBooks;
+					echo "</h4>
+						<h4>Total Book price= ".$valueBooks;
+					echo "	</h4>			
 									
 					</th>
 	
 							
 					<tr>
 						
-						<th>
-							<button type="button">place your order</button>
-						</th>
+						<th>";
+							if($nrBooks!=0)echo "<form method=".'"'."POST".'"'." action=".'"'."books/finalize_purchase.php".'"'."><button type=".'"'."button".'"'.">place your order</button>";
+					echo"	</th>
 					</tr>
 					
-				</table>
+				</table>";
+				?>
 				</div>
 			</div>
 			<div class="sidebar">
