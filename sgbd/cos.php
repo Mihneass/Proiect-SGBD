@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-
+<apex:page  applyHtmlTag="false">
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -96,35 +96,42 @@
 					if($element['buyOrLease']!='imprumuta')
 						$valueBooks+=$element['price'];
 					echo "
-					<table>
+					<table class='buy'>
 
 
-					<tr>
-						<th>
-				      				
-							<h4>Book Name=".$element['bookName']; 
+					<tr><th>Book Name</th>";
+							echo"<td>".$element['bookName']; 
+							echo"</td>";
+							echo "<tr><th>Book Price</th>";
+
 					if($element['buyOrLease']!="imprumuta")
-					echo "</h4>
-							<h4>Book Price=".$element['price']; 
-							else echo "</h4>
-							<h4>Book Price= Imprumut"; 
-					echo "</h4>
-							<h4>Tranzaction type=".$element['buyOrLease']; 
-					echo "</h4>
+					echo "<td>".$element['price']; 
+							else echo "<td>Imprumut"; 
+							echo"</td>";
+							
+					echo "
+					<tr><th>Type</th>";
+					echo"<td>".$element['buyOrLease']; 
+					echo"</td>";
+					echo "
 							
 							
-		               </th>
-						 <th><form method=".'"'."POST".'"'." action=".'"'."books/basket_eliminate.php".'"'.">
+		              
+						 <th>
+						 <form method=".'"'."POST".'"'." action=".'"'."books/basket_eliminate.php".'"'.">
 						 <input type=".'"'."text".'"'." name=".'"'."position_to_delete".'"'." value=".'"'.$element['positionInBasket'].'"'." hidden>
 							<button type=".'"'."submit".'"'."> &times</button></form>
-
 							
-						</th>
+						</th></tr>
 					</tr>";
+					echo"<tr><li class='no'>--------------------------</li></tr>";
+					echo"
+
+					</table>";
 					}
 
-
-					echo "
+					echo "<table class='buy2'>
+					<tr><li class='no'>--------------------------</li></tr>
 					<th>	
 						<h4>Total Nr. of Book = ".$nrBooks;
 					echo "</h4>
