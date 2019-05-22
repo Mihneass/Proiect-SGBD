@@ -91,31 +91,33 @@
 				<div class="services">
 					<h2>Books</h2>
         <?php
-        $tip=0;
-        if( $_POST['schedule2']==="pret"){$tip=1;echo"-------------------dupa pret";}
+				$tip=0;
+				if(!isset($_COOKIE['schedule2']))setcookie("schedule2",$_POST['schedule2'],time()+86400);
+				if(!isset($_COOKIE['INp']))setcookie("INp",$_POST['INp'],time()+86400);
+        if( $_COOKIE['schedule2']==="pret"){$tip=1;echo"-------------------dupa pret";}
         else
-        if( $_POST['schedule2']==="nume"){$tip=2;echo"-------------------dupa titlu";}
+        if( $_COOKIE['schedule2']==="nume"){$tip=2;echo"-------------------dupa titlu";}
         else
-        if( $_POST['schedule2']==="autor"){$tip=3;echo"-------------------dupa autor";}
+        if( $_COOKIE['schedule2']==="autor"){$tip=3;echo"-------------------dupa autor";}
         else
-        if( $_POST['schedule2']==="an"){$tip=4;echo"-------------------dupa an";}
+        if( $_COOKIE['schedule2']==="an"){$tip=4;echo"-------------------dupa an";}
         else
-        if( $_POST['schedule2']==="nr_disponibile"){$tip=5;echo"-------------------dupa nr_disponibile";}
+        if( $_COOKIE['schedule2']==="nr_disponibile"){$tip=5;echo"-------------------dupa nr_disponibile";}
 
 
         echo"$tip-------------------";
-					if(isset($_GET['page']))showBooks($tip,"carti", $_POST['INp'],$_GET['page']);
-					                   else showBooks($tip,"carti", $_POST['INp'],1);
+					if(isset($_GET['page']))showBooks($tip,"carti", $_COOKIE['INp'],$_GET['page']);
+					                   else showBooks($tip,"carti", $_COOKIE['INp'],1);
 					
 				?>
 				</div>
 				<div class="pages">
 						<?php
                         $i=0;
-                        $d=$_POST['INp'];
+                        $d=$_COOKIE['INp'];
 						if(isset($_GET['page']))$currentPage=$_GET['page'];
 						else $currentPage=1;
-						$nrBooks=numberOfBooks($tip,"carti","'$d'");
+						$nrBooks=numberOfBooks($tip,"carti",$d);
 						$totalPages=(int)$nrBooks/12;
 						if($currentPage>5)echo "<a href=".'"'."findmybook.php?page=1".'"'.">1</a>   ...   ";
 						while($i<$totalPages){
