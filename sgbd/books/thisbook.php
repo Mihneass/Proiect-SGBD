@@ -132,6 +132,7 @@
 					echo "</h4></td></tr><tr><th><h4>Total nr. of books"; 
 					echo "</h4></th><td><h4>".$row['NR_TOTALE'];
 					
+					if($row['NR_DISPONIBILE']>0)
 					echo "</h4></td></tr>
 					</table>
 					<table>
@@ -151,6 +152,17 @@
 							</th>
 						</tr>
 				</table>";
+				else echo "</h4></td></tr>
+				</table>
+				<table>
+					</tr>
+					<tr>
+						<th>
+							OUT OF STOCK
+							
+						</th>
+					</tr>
+			</table>";
 				?>
 				</div>
 			</div>
