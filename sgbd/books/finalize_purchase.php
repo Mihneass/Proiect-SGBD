@@ -1,4 +1,7 @@
 <?php
+
+
+
 $fileContent = file_get_contents('./cosul_curent.json');
 $basket = json_decode($fileContent,true); 
 $conn = oci_connect("student", "student", "localhost:1521/xe");

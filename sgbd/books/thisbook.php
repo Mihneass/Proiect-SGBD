@@ -64,7 +64,7 @@
 					<a href="../contact.php">imprumuturi</a>
 				</li>
 				<li class="booking">
-					<a href="../booking.php">Contul meu</a>
+					<a href="../booking.php">Cauta o carte</a>
 				</li>
 			</ul>
 		</div>
@@ -146,7 +146,7 @@
 								<input type=".'"'."text".'"'." name=".'"'."book_ID".'"'." value=".'"'.$row['ID_CARTE'].'"'." hidden>
 								<input type=".'"'."text".'"'." name=".'"'."book_name".'"'." value=".'"'.$row['TITLU_CARTE'].'"'." hidden>
 								<input type=".'"'."text".'"'." name=".'"'."book_price".'"'." value=".'"'.$row['PRET'].'"'." hidden>
-								<button type=".'"'."submit".'"'." name=".'"'."buy".'"'.">Buy</button></form>
+								<button type=".'"'."submit".'"'." name=".'"'."buy".'"'.">Add</button></form>
 								
 							</th>
 						</tr>

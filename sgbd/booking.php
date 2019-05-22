@@ -61,7 +61,7 @@
 					<a href="contact.php">imprumuturi</a>
 				</li>
 				<li class="booking">
-					<a href="booking.php">Contul meu</a>
+					<a href="booking.php">Cauta o carte</a>
 				</li>
 			</ul>
 		</div>
@@ -71,41 +71,35 @@
 			<div class="section">
 				<div class="booking">
 					<h2>my account settings</h2>
-					<p>
-					Text text text	</p>
-					<form action="index.php">
-						<h4>fill in your contact details</h4>
-						<div class="form1">
-							<label for="fname"> <span>first name</span>
-								<input type="text" name="fname" id="fname">
-							</label>
-							<label for="lname"> <span>last name</span>
-								<input type="text" name="lname" id="lname">
-							</label>
-							<label for="email3"> <span>email address</span>
-								<input type="text" name="email3" id="email3">
-							</label>
-							<label for="phone"> <span>phone number</span>
-								<input type="text" name="phone" id="phone">
-							</label>
-							
-							<label for="address2"> <span>address </span>
-								<input type="text" name="address2" id="address2">
-							</label>
-							<label for="zip"> <span>zipcode</span>
-								<input type="text" name="zip" id="zip">
-							</label>
-							
-						</div>
-						
-						<div class="form2">
-							<div>
+					<?php
+					
+					
+					
+					
+					echo "
+					</table>
+					<table>
+						</tr>
+						<tr>
+							<th> 
+								<form method=".'"'."POST".'"'." action=".'"'."books/findmybook.php".'"'.">
+								<select name=".'"'."schedule2".'"'." id=".'"'."schedule2".'"'.">
+								<option value=".'"'."nume".'"'.">dupa nume</option>
+								<option value=".'"'."autor".'"'.">dupa autor</option>	
+								<option value=".'"'."an".'"'.">dupa an</option>
+								<option value=".'"'."pret".'"'.">dupa pret</option>	
+								<option value=".'"'."nr_disponibile".'"'.">dupa nr_disponibile</option>	
+							</select>
+							<label for='INpe'> <span>INPUT </span>
+									<input  type='text' name='INp' id='INp3' required>
+								</label>
+									<button class='INp' type=".'"'."submit".'"'." name=".'"'."buy".'"'.">go</button></form>
 								
-							</div>
-							
-						</div>
+							</th>
+						</tr>";
 						
-					</form>
+				echo" </table>";
+				?>
 				</div>
 			</div>
 			<div class="sidebar">

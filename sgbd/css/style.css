@@ -716,7 +716,8 @@ body {
 #body .content .section .booking .form2 div input,
 #body .content .section .booking form button,
 #body .header form input,
-#body .header form button {
+#body .header form button,
+#INp {
 	background-position: -277px -382px;
 	width: 110px;
 }
@@ -1116,13 +1117,20 @@ body {
 
 
 
-#body .content .section .services .tab {
+#body .content .section .services .tab
+
+
+ {
   border-collapse: collapse;
   width: 100%;
 }
 
 #body .content .section .services .tab td, 
-#body .content .section .services .tab th {
+#body .content .section .services .tab th,
+#body .content .section .services .buy2 th,
+#body .content .section .services .buy tr,
+#body .content .section .services .buy td
+ {
   border: 1px solid #ddd;
   padding: 8px;
 }
@@ -1136,4 +1144,26 @@ body {
   text-align: left;
   background-color: #9CC0D0;
   
+}
+
+#body .content .section .services .buy {
+  border-collapse: collapse;
+  width: 50%;
+  text-align: left;
+  background-color: #9CC0D0;
+}
+
+#body .content .section .services .buy td  {
+ 
+  background-color: #9CC7D0;
+}
+#body .content .section .services .buy button  {
+ width: 100%;
+  background-color: #9CC7D0;
+}
+#body .content .section .services .buy2 {
+  border-collapse: collapse;
+  width: 50%;
+  text-align: left;
+  background-color: #7AA7A0;
 }
