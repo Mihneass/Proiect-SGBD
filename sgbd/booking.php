@@ -72,7 +72,8 @@
 				<div class="booking">
 					<h2>my account settings</h2>
 					<?php
-					
+					setcookie("schedule2",0,time()-86400);
+					setcookie("INp",0,time()-86400);
 					
 					
 					
