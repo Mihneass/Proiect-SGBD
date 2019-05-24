@@ -1,0 +1,28 @@
+#body .content .section .services .buy2 th,
+#body .content .section .services .buy tr,
+#body .content .section .services .buy td
+ {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#body .content .section .services .buy {
+  border-collapse: collapse;
+  width: 50%;
+  text-align: left;
+  background-color: #9CC0D0;
+}
+
+#body .content .section .services .buy td  {
+ 
+  background-color: #9CC7D0;
+}
+#body .content .section .services .buy button  {
+ width: 100%;
+  background-color: #9CC7D0;
+}
+#body .content .section .services .buy2 {
+  border-collapse: collapse;
+  width: 50%;
+  text-align: left;
+  background-color: #7AA7A0;
+}
