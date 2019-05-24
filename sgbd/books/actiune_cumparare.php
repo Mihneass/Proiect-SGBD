@@ -1,4 +1,5 @@
 <?php
+if($_COOKIE['is_logged']===0)header('Location: index.php');
 setcookie("current_position",$_COOKIE['current_position']+1,time()+86400);
 $newBook=array(
     'positionInBasket'=>$_COOKIE['current_position'],

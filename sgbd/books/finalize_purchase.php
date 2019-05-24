@@ -12,6 +12,12 @@ if (!$conn) {
    exit;
 }
 foreach($basket as $element){
+$enquiry="SELECT * FROM CARTI WHERE ID_CARTE=".$element['bookID'];
+$stid = oci_parse($conn, $enquiry);
+oci_execute($stid);
+$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+
+if($row['NR_DISPONIBILE']>0)
 if($element['buyOrLease']==="cumpara")$enquiry="UPDATE CARTI SET NR_DISPONIBILE=NR_DISPONIBILE-1, NR_TOTALE=NR_TOTALE-1 where ID_CARTE=".$element['bookID'];
                             else $enquiry="UPDATE CARTI SET NR_DISPONIBILE=NR_DISPONIBILE-1 where ID_CARTE=".$element['bookID'];
 try{$stid = oci_parse($conn, $enquiry);
@@ -21,7 +27,7 @@ catch (Exception $e){
 }
 
 
-if($element['buyOrLease']!="cumpara")$enquiry="INSERT INTO IMPRUMUTURI VALUES(:id,:idBook,:idUser,:date1,:date2,:date3,:date4)";
+if($element['buyOrLease']!="cumpara"){$enquiry="INSERT INTO IMPRUMUTURI VALUES(:id,:idBook,:idUser,:date1,:date2,:date3,:date4)";
 $stid = oci_parse($conn, $enquiry);
 $idd=$_COOKIE['loan_id'];
 $idUser=$_COOKIE['userID'];
@@ -33,10 +39,10 @@ oci_bind_by_name($stid,':date1',$today);
 oci_bind_by_name($stid,':date2',$today);
 oci_bind_by_name($stid,':date3',$today);
 oci_bind_by_name($stid,':date4',$today);
-setcookie("loan_id",$_COOKIE['loan_id']+1,time()+(86400*10));
-echo $_COOKIE['loan_id'];
+setcookie("loan_id",$idd+1,time()+(86400*10));
+echo $_COOKIE['loan_id']."  ";
 oci_execute($stid);
-
+}
 
 $enquiry="SELECT * FROM CARTI WHERE ID_CARTE=".$element['bookID'];
 $stid = oci_parse($conn, $enquiry);

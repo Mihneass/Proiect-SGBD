@@ -244,32 +244,38 @@
    							echo $m['message'], "\n";
    							exit;
 										}
-							$enquiry="SELECT * FROM ".$table." where GEN_CARTE=".$bookType;
+							$enquiry="SELECT GIVE_BOOKS(".$bookType.")"." AS mrfc FROM dual";
+							
 							$stid = oci_parse($conn, $enquiry);
 							oci_execute($stid);
 							$i=0;
 							$currPag=1;
+							$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+							$rc=$row['MRFC'];
+							oci_execute($rc);
 							echo "<table><tr>";
 							while($currPag!=$pageNumber){
 							$currPag++;
 							while($i<12){
-								$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+								$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+								//var_dump($row);
 								$i++;}
 								$i=0;
 							}
 							$i=0;
 							while($i<12){
-								$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
-								if($row==null)break;
+								$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+								if($rc_row==null)break;
 								$i++;
-								
-								echo "<th><h4>".$row['TITLU_CARTE']."</h4>";
-								echo "<h3><a href=".'"'."thisbook.php?page=".$row['ID_CARTE'].'"'."><img src=".'"'."../images/book.jpg".'"'." ></a></h3></th>";
+								echo "<th><h4>".$rc_row['TITLU_CARTE']."</h4>";
+								echo "<h3><a href=".'"'."thisbook.php?page=".$rc_row['ID_CARTE'].'"'."><img src=".'"'."../images/book.jpg".'"'." ></a></h3></th>";
 								if($i%3==0)echo"</tr><tr>";
+								
 							
 										}
 														
 							echo "</tr></table>";
+							oci_free_statement($rc);
 							oci_close($conn);
 							
 						}
@@ -280,12 +286,15 @@
    							echo $m['message'], "\n";
    							exit;
 										}
-							$enquiry="SELECT * FROM ".$table." where GEN_CARTE=".$bookType;
+							$enquiry="SELECT GIVE_BOOKS(".$bookType.")"." AS mrfc FROM dual";
 							$stid = oci_parse($conn, $enquiry);
 							oci_execute($stid);
 							$i=0;
-
-							while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
+							$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+							$rc=$row['MRFC'];
+							oci_execute($rc);
+							while ($rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
+							oci_free_statement($rc);
 							oci_close($conn);
 							return $i;
 						}

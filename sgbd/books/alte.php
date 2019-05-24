@@ -232,62 +232,67 @@
 </body>
 <?php 
 						function showBooks($table,$bookType,$pageNumber){
-						//	$table="carti";
-						//	$bookType="'Drama'";
-							$conn = oci_connect("student", "student", "localhost:1521/xe");
-							if (!$conn) {
-  							$m = oci_error();
-   							echo $m['message'], "\n";
-   							exit;
-										}
-							if($bookType!="'Altele'")$enquiry="SELECT * FROM ".$table." where GEN_CARTE=".$bookType;
-											  else $enquiry="SELECT * FROM ".$table." where GEN_CARTE!='Drama' AND GEN_CARTE!='Fiction' AND GEN_CARTE!='Horror' AND GEN_CARTE!='Romance' AND GEN_CARTE!='Journal' AND GEN_CARTE!='Poetry'";
-							$stid = oci_parse($conn, $enquiry);
-							oci_execute($stid);
-							$i=0;
-							$currPag=1;
-							echo "<table><tr>";
-							while($currPag!=$pageNumber){
-							$currPag++;
-							while($i<12){
-								$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
-								$i++;}
+							//	$table="carti";
+							//	$bookType="'Drama'";
+								$conn = oci_connect("student", "student", "localhost:1521/xe");
+								if (!$conn) {
+								  $m = oci_error();
+								   echo $m['message'], "\n";
+								   exit;
+											}
+								$enquiry="SELECT GIVE_OTHER_BOOKS(".$bookType.")"." AS mrfc FROM dual";
+								$stid = oci_parse($conn, $enquiry);
+								oci_execute($stid);
 								$i=0;
-							}
-							$i=0;
-							while($i<12){
+								$currPag=1;
 								$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
-								if($row==null)break;
-								$i++;
+								$rc=$row['MRFC'];
+								oci_execute($rc);
+								echo "<table><tr>";
+								while($currPag!=$pageNumber){
+								$currPag++;
+								while($i<12){
+									$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+									//var_dump($row);
+									$i++;}
+									$i=0;
+								}
+								$i=0;
+								while($i<12){
+									$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+									if($rc_row==null)break;
+									$i++;
+									echo "<th><h4>".$rc_row['TITLU_CARTE']."</h4>";
+									echo "<h3><a href=".'"'."thisbook.php?page=".$rc_row['ID_CARTE'].'"'."><img src=".'"'."../images/book.jpg".'"'." ></a></h3></th>";
+									if($i%3==0)echo"</tr><tr>";
+									
 								
-								echo "<th><h4>".$row['TITLU_CARTE']."</h4>";
-								echo "<h3><a href=".'"'."thisbook.php?page=".$row['ID_CARTE'].'"'."><img src=".'"'."../images/book.jpg".'"'." ></a></h3></th>";
-								if($i%3==0)echo"</tr><tr>";
-							
-										}
-														
-							echo "</tr></table>";
-							oci_close($conn);
-							
-						}
-						function numberOfBooks($table,$bookType){
-							$conn = oci_connect("student", "student", "localhost:1521/xe");
-							if (!$conn) {
-  							$m = oci_error();
-   							echo $m['message'], "\n";
-   							exit;
-										}
-							if($bookType!="'Altele'")$enquiry="SELECT * FROM ".$table." where GEN_CARTE=".$bookType;
-										        else $enquiry="SELECT * FROM ".$table." where GEN_CARTE!='Drama' AND GEN_CARTE!='Fiction' AND GEN_CARTE!='Horror' AND GEN_CARTE!='Romance' AND GEN_CARTE!='Journal' AND GEN_CARTE!='Poetry'";
-
-							$stid = oci_parse($conn, $enquiry);
-							oci_execute($stid);
-							$i=0;
-
-							while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
-							oci_close($conn);
-							return $i;
-						}
+											}
+															
+								echo "</tr></table>";
+								oci_free_statement($rc);
+								oci_close($conn);
+								
+							}
+							function numberOfBooks($table,$bookType){
+								$conn = oci_connect("student", "student", "localhost:1521/xe");
+								if (!$conn) {
+								  $m = oci_error();
+								   echo $m['message'], "\n";
+								   exit;
+											}
+								$enquiry="SELECT GIVE_OTHER_BOOKS(".$bookType.")"." AS mrfc FROM dual";
+								$stid = oci_parse($conn, $enquiry);
+								oci_execute($stid);
+								$i=0;
+								$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+								$rc=$row['MRFC'];
+								oci_execute($rc);
+								while ($rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
+								oci_free_statement($rc);
+								oci_close($conn);
+								return $i;
+							}
 
 ?>
 
