@@ -8,6 +8,7 @@
 </head>
 
 <?php
+
 if(!isset($_COOKIE['is_logged'])){
 	setcookie("is_logged",0,time()+(86400*10),"/");
 	setcookie("user",0,time()-(86400*10),"/");
@@ -156,8 +157,8 @@ if(!isset($_COOKIE['is_logged'])){
 
 								<label for="gen"> <span>gender </span>
 									<select name="schedule" id="schedule">
-										<option value="">male</option>
-										<option value="">female</option>	
+										<option value="baiat">male</option>
+										<option value="fata">female</option>	
 									</select>
 								</label>
 								<label for="phone"> <span>phone number</span>

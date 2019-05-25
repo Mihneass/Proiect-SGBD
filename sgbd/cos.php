@@ -5,7 +5,10 @@
 	<meta charset="UTF-8">
 	<title>cos</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	
+	<link rel="stylesheet" href="css/cos.css" type="text/css">
+	<style>
+
+	</style>
 </head>
 <body>
 	<div id="header">

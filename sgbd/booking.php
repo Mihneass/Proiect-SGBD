@@ -15,7 +15,7 @@
 				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
 				echo "</form>";
 			}
-			else header('Location: index.php');
+			
 			?>
 			<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
 			<form action="index.php">
@@ -70,7 +70,7 @@
 		<div class="content">
 			<div class="section">
 				<div class="booking">
-					<h2>my account settings</h2>
+					<h2>Look for a book</h2>
 					<?php
 					setcookie("schedule2",0,time()-86400);
 					setcookie("INp",0,time()-86400);

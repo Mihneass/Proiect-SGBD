@@ -5,18 +5,23 @@ if (!$conn) {
    echo $m['message'], "\n";
    exit;
 }
-$enquiry="SELECT * FROM useri where USER_NAME="."'".$_POST['uname']."'";
+$enquiry="SELECT GIVE_USERS"."('".$_POST['uname']."') as mrfc from dual";
 $stid = oci_parse($conn, $enquiry);
 oci_execute($stid);
 $row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
-if($row==null){setcookie("is_logged","USER_NOT_FOUND",time()+(86400*10),"/");
-               header('Location: /sgbd/index.php');}
-        else if($row['PASS']!=$_POST['pass']){
+$rc=$row['MRFC'];
+oci_execute($rc);
+$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+if($rc_row==null){setcookie("is_logged","USER_NOT_FOUND",time()+(86400*10),"/");
+               header('Location: /sgbd/index.php');
+            }
+        else if($rc_row['PASS']!=$_POST['pass']){
             setcookie("is_logged","PASS_NOT_FOUND",time()+(86400*10),"/");
-            header('Location: /sgbd/index.php');}
+            header('Location: /sgbd/index.php');
+        }
             else {setcookie("is_logged","LOGGED",time()+(86400*10),"/");
-                  setcookie("user",$row['PRENUME'],time()+(86400*10),"/");
-                  setcookie("userID",$row['ID_USER'],time()+(86400*10),"/");
+                  setcookie("user",$rc_row['PRENUME'],time()+(86400*10),"/");
+                  setcookie("userID",$rc_row['ID_USER'],time()+(86400*10),"/");
                   header('Location: /sgbd/index.php');
                 }
 
