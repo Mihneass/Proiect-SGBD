@@ -244,7 +244,7 @@
    							echo $m['message'], "\n";
    							exit;
 										}
-							$enquiry="SELECT GIVE_BOOKS(".$bookType.")"." AS mrfc FROM dual";
+							$enquiry="SELECT GIVE_BOOKS_BY_GENRE(".$bookType.")"." AS mrfc FROM dual";
 							
 							$stid = oci_parse($conn, $enquiry);
 							oci_execute($stid);
@@ -286,7 +286,7 @@
    							echo $m['message'], "\n";
    							exit;
 										}
-							$enquiry="SELECT GIVE_BOOKS(".$bookType.")"." AS mrfc FROM dual";
+							$enquiry="SELECT GIVE_BOOKS_BY_GENRE(".$bookType.")"." AS mrfc FROM dual";
 							$stid = oci_parse($conn, $enquiry);
 							oci_execute($stid);
 							$i=0;
@@ -294,6 +294,7 @@
 							$rc=$row['MRFC'];
 							oci_execute($rc);
 							while ($rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
+							
 							oci_free_statement($rc);
 							oci_close($conn);
 							return $i;

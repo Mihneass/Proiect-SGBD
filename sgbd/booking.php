@@ -10,11 +10,15 @@
 	<div id="header">
 		<div>
 		<?php
+		setcookie("schedule2",$_POST['schedule2'],time()-86400);
+		setcookie("INp",$_POST['INp'],time()-86400);
 			if($_COOKIE['is_logged']==="LOGGED"){
 				echo "<form action=".'"'."logout_process.php".'"'." method=".'"'."POST".'"'." >";	
 				echo "<button type=".'"'."submit".'"'."name=".'"'."logbutton".'"'.">LOGOUT</button>";
 				echo "</form>";
 			}
+			
+			
 			
 			?>
 			<a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
@@ -72,8 +76,8 @@
 				<div class="booking">
 					<h2>Look for a book</h2>
 					<?php
-					setcookie("schedule2",0,time()-86400);
-					setcookie("INp",0,time()-86400);
+				//	setcookie("schedule2",0,time()-86400);
+				//	setcookie("INp",0,time()-86400);
 					
 					
 					
@@ -85,8 +89,7 @@
 							<th> 
 								<form method=".'"'."POST".'"'." action=".'"'."books/findmybook.php".'"'.">
 								<select name=".'"'."schedule2".'"'." id=".'"'."schedule2".'"'.">
-								<option value=".'"'."nume".'"'.">dupa nume</option>
-								<option value=".'"'."autor".'"'.">dupa autor</option>	
+								<option value=".'"'."nume".'"'.">dupa nume</option>	
 								<option value=".'"'."an".'"'.">dupa an</option>
 								<option value=".'"'."pret".'"'.">dupa pret</option>	
 								<option value=".'"'."nr_disponibile".'"'.">dupa nr_disponibile</option>	
@@ -100,6 +103,15 @@
 						</tr>";
 						
 				echo" </table>";
+
+				echo "<br><br><br><br><br><br><br><br><br>
+						<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
+						<label for="."'"."give_author"."'"."> Insert the ID of the book to find the author! </label>
+						<input  type='text' name='ID_INP' id='give_author' required>
+						<button class='ID_INP' type=".'"'."submit".'"'." name=".'"'."www".'"'.">go</button>
+						</form>";
+				
+				
 				?>
 				</div>
 			</div>
