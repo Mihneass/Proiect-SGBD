@@ -18,8 +18,8 @@ if($row!=null){
 if($_POST['passr']!=$_POST['passr2'])setcookie("error_state","PASS_DOESNT_MATCH",time()+(86400*100));
 
 
-$enquiry="INSERT INTO USERI".
-" VALUES(:idul, :userrr, :password, :nume, :prenume, 'baiat', :phone, :addre, :email, '20-05-2019', '20-05-2019')";
+$enquiry="begin INSERT_USER".
+"(:idul, :userrr, :password, :nume, :prenume, :gender, :phone, :addre, :email, '20-05-2019', '20-05-2019');end;";
 $stid = oci_parse($conn, $enquiry);
 $idd=$_COOKIE['current_ID'];
 oci_bind_by_name($stid,':idul',$idd);
@@ -27,7 +27,7 @@ oci_bind_by_name($stid,':userrr',$_POST['uname']);
 oci_bind_by_name($stid,':password',$_POST['passr']);
 oci_bind_by_name($stid,':nume',$_POST['fname']);
 oci_bind_by_name($stid,':prenume',$_POST['lname']);
-//oci_bind_by_name($stid,':gender',"baiat");
+oci_bind_by_name($stid,':gender',$_POST['schedule']);
 oci_bind_by_name($stid,':phone',$_POST['phone']);
 oci_bind_by_name($stid,':addre',$_POST['address']);
 oci_bind_by_name($stid,':email',$_POST['email3']);
