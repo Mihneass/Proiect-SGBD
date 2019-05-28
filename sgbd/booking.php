@@ -112,6 +112,35 @@
 						</form>";
 				
 				
+
+
+
+					echo"<br><br><br><br><br><br><br><br><br>	
+					<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
+					
+						
+						<tr>
+							<th> 
+					<label for="."'"."give_title"."'"."> Titlu </label>
+						<input  type='text' name='ID_title' id='give_title' required>
+						</th>
+						<th>
+						<label for="."'"."give_pret"."'"."> Pret </label>
+						<input  type='text' name='ID_pret' id='give_pret' required>
+						</th>
+						<th>
+						<label for="."'"."give_gen"."'"."> Gen </label>
+						<input  type='text' name='ID_gen' id='give_gen' required>
+						</th>
+						<th>
+						<label for="."'"."give_an"."'"."> An </label>
+						<input  type='text' name='ID_INP' id='give_an' required>
+						</th>
+						</tr>
+						<td>
+						<button class='ID_INP' type=".'"'."submit".'"'." name=".'"'."www".'"'.">go</button>
+						</td>
+						</form>";
 				?>
 				</div>
 			</div>
