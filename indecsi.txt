@@ -1,0 +1,8 @@
+create index idx_carti_titlu on carti(titlu_carte);
+create index idx_carti_an on carti(an_publicatie);
+create index idx_carti_gen on carti(gen_carte);
+create index idx_carti_nrD on carti(nr_disponibile);
+create index idx_carti_nrT on carti(nr_totale);
+create index idx_carti_pret on carti(pret);
+
+create index idx_carti on carti(titlu_carte,an_publicatie,gen_carte,nr_disponibile,nr_totale,pret);
