@@ -77,73 +77,13 @@
 		<div class="content">
 			<div class="section">
 				<div class="booking">
-					<h2>Look for a book</h2>
+					<h2>Look for a book?</h2>
 					<?php
-				//	setcookie("schedule2",0,time()-86400);
-				//	setcookie("INp",0,time()-86400);
-					
-					
-					
-					echo "
-					</table>
-					<table>
-						</tr>
-						<tr>
-							<th> 
-								<form method=".'"'."POST".'"'." action=".'"'."books/findmybook.php".'"'.">
-								<select name=".'"'."schedule2".'"'." id=".'"'."schedule2".'"'.">
-								<option value=".'"'."nume".'"'.">dupa nume</option>	
-								<option value=".'"'."an".'"'.">dupa an</option>
-								<option value=".'"'."pret".'"'.">dupa pret</option>	
-								<option value=".'"'."nr_disponibile".'"'.">dupa nr_disponibile</option>	
-							</select>
-							<label for='INpe'> <span>INPUT </span>
-									<input  type='text' name='INp' id='INp3' required>
-								</label>
-									<button class='INp' type=".'"'."submit".'"'." name=".'"'."buy".'"'.">go</button></form>
-								
-							</th>
-						</tr>";
-						
-				echo" </table>";
 
-				echo "<br><br><br><br><br><br><br><br><br>
-						<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
-						<label for="."'"."give_author"."'"."> Insert the ID of the book to find the author! </label>
-						<input  type='text' name='ID_INP' id='give_author' required>
-						<button class='ID_INP' type=".'"'."submit".'"'." name=".'"'."www".'"'.">go</button>
-						</form>";
-				
-				
-
-
-
-					echo"<br><br><br><br><br><br><br><br><br>	
-					<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
-					
-						
-						<tr>
-							<th> 
-					<label for="."'"."give_title"."'"."> Titlu </label>
-						<input  type='text' name='ID_title' id='give_title' required>
-						</th>
-						<th>
-						<label for="."'"."give_pret"."'"."> Pret </label>
-						<input  type='text' name='ID_pret' id='give_pret' required>
-						</th>
-						<th>
-						<label for="."'"."give_gen"."'"."> Gen </label>
-						<input  type='text' name='ID_gen' id='give_gen' required>
-						</th>
-						<th>
-						<label for="."'"."give_an"."'"."> An </label>
-						<input  type='text' name='ID_INP' id='give_an' required>
-						</th>
-						</tr>
-						<td>
-						<button class='ID_INP' type=".'"'."submit".'"'." name=".'"'."www".'"'.">go</button>
-						</td>
-						</form>";
+					if(isset($_GET['page']))showBooks("carti",$_GET['uname'],$_GET['page']);
+					else showBooks("carti","'Drama'",1);
+ 
+	
 				?>
 				</div>
 			</div>
@@ -243,4 +183,71 @@
 		</div>
 	</div>
 </body>
+<?php 
+				function showBooks($table,$bookType,$pageNumber){
+					//	$table="carti";
+					//	$bookType="'Drama'";
+						$conn = oci_connect("student", "student", "localhost:1521/xe");
+						if (!$conn) {
+						  $m = oci_error();
+						   echo $m['message'], "\n";
+						   exit;
+									}
+						$enquiry="SELECT RECOMANDA_DUPA_USERI(".$bookType.")"." AS mrfc FROM dual";
+						
+						$stid = oci_parse($conn, $enquiry);
+						oci_execute($stid);
+						$i=0;
+						$currPag=1;
+						$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+						$rc=$row['MRFC'];
+						oci_execute($rc);
+						echo "<table><tr>";
+						while($currPag!=$pageNumber){
+						$currPag++;
+						while($i<12){
+							$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+							//var_dump($row);
+							$i++;}
+							$i=0;
+						}
+						$i=0;
+						while($i<12){
+							$rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS);
+							if($rc_row==null)break;
+							$i++;
+							echo "<th><h4>".$rc_row['TITLU_CARTE']."</h4>";
+							echo "<h3><a href=".'"'."books/thisbook.php?page=".$rc_row['ID_CARTE'].'"'."><img src=".'"'."images/book.jpg".'"'." ></a></h3></th>";
+							if($i%3==0)echo"</tr><tr>";
+							
+						
+									}
+													
+						echo "</tr></table>";
+						oci_free_statement($rc);
+						oci_close($conn);
+						
+					}
+					function numberOfBooks($table,$bookType){
+						$conn = oci_connect("student", "student", "localhost:1521/xe");
+						if (!$conn) {
+						  $m = oci_error();
+						   echo $m['message'], "\n";
+						   exit;
+									}
+						$enquiry="SELECT RECOMANDA_DUPA_USERI(".$bookType.")"." AS mrfc FROM dual";
+						$stid = oci_parse($conn, $enquiry);
+						oci_execute($stid);
+						$i=0;
+						$row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+						$rc=$row['MRFC'];
+						oci_execute($rc);
+						while ($rc_row = oci_fetch_array($rc, OCI_ASSOC+OCI_RETURN_NULLS))$i++;
+						
+						oci_free_statement($rc);
+						oci_close($conn);
+						return $i;
+					}
+
+?>
 </html>
