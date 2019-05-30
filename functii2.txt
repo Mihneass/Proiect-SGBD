@@ -1,0 +1,37 @@
+create or replace FUNCTION "RECOMANDA"(uname IN VARCHAR) RETURN SYS_REFCURSOR AS rc SYS_REFCURSOR;
+  v_gen varchar2(30);
+BEGIN
+
+
+select gen_carte into v_gen from
+(SELECT gen_carte,count(*) as nr FROM carti c
+left JOIN imprumuturi i ON c.id_carte=i.id_carte_i 
+group by gen_carte
+order by count(*)desc )
+where rownum < 2;
+
+  OPEN rc FOR SELECT * FROM CARTI WHERE GEN_CARTE=v_gen;
+ return rc;
+END RECOMANDA;
+
+
+
+
+create or replace FUNCTION "RECOMANDA_DUPA_USERI"(uname IN VARCHAR) RETURN SYS_REFCURSOR AS rc SYS_REFCURSOR;
+  v_gen varchar2(30);
+BEGIN
+
+
+ OPEN rc FOR SELECT * FROM CARTI k inner join 
+(
+SELECT id_carte_i FROM useri u
+left JOIN imprumuturi i ON u.id_user=i.id_datornic 
+left outer JOIN tranzactii t ON u.id_user=t.id_cumparator
+where user_name!=uname)g on id_carte_i=id_carte
+order by (nr_totale-nr_disponibile);
+
+ 
+ return rc;
+END RECOMANDA_DUPA_USERI;
+
+
