@@ -106,7 +106,6 @@
 						</tr>";
 						
 				echo" </table>";
-
 				echo "<br><br><br><br><br><br><br><br><br>
 						<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
 						<label for="."'"."give_author"."'"."> Insert the ID of the book to find the author! </label>
@@ -115,9 +114,6 @@
 						</form>";
 				
 				
-
-
-
 					echo"<br><br><br><br><br><br><br><br><br>	
 					<form method=".'"'."POST".'"'." action=".'"'."books/redirect_to_thisbook.php".'"'.">
 					

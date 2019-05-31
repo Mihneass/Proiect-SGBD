@@ -73,7 +73,7 @@
 			<div class="section">
 				<div class="contact">
 					<h2>imprumuturile mele</h2>
-					<?php showBooks($_COOKIE['userID']); ?>
+					<?php  showBooks($_COOKIE['userID']); ?>
 				</div>
 			</div>
 			<div class="sidebar">

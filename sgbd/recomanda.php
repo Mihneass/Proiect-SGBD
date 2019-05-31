@@ -79,7 +79,6 @@
 				<div class="booking">
 					<h2>Look for a book?</h2>
 					<?php
-
 					if(isset($_GET['page']))showBooks("carti",$_GET['uname'],$_GET['page']);
 					else showBooks("carti","'Drama'",1);
  
@@ -248,6 +247,5 @@
 						oci_close($conn);
 						return $i;
 					}
-
 ?>
 </html>
